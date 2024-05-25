@@ -3,22 +3,25 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { ChatComponent } from './components/chat/chat.component';
-import { MessageListComponent } from './components/message-list/message-list.component';
-import { MessageInputComponent } from './components/message-input/message-input.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatmoduleModule } from './shared/modules/matmodule.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent,
-    ChatComponent,
-    MessageListComponent,
-    MessageInputComponent
+   
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatmoduleModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
