@@ -1,1 +1,69 @@
-<p>chat works!</p>
+<div class="flex h-screen antialiased text-gray-200 bg-gray-800">
+    <div class="flex flex-row h-full w-full overflow-x-hidden">
+        <div class="flex flex-col py-8 pl-6 pr-2 w-64 bg-gray-900 flex-shrink-0">
+            <div class="flex flex-row items-center justify-center h-12 w-full">
+                <div class="ml-2 font-bold text-2xl text-white">QuickChat</div>
+            </div>
+            <div class="flex flex-col mt-8">
+                <div class="flex flex-row items-center justify-between text-xs text-gray-400">
+                    <span class="font-bold">Active Conversations</span>
+                    <span class="flex items-center justify-center bg-gray-700 h-4 w-4 rounded-full">4</span>
+                </div>
+                <div class="flex flex-col space-y-1 mt-4 -mx-2 h-48 overflow-y-auto">
+                    <button class="flex flex-row items-center hover:bg-gray-700 rounded-xl p-2">
+                        <div class="flex items-center justify-center h-8 w-8 bg-indigo-500 rounded-full">
+                            H
+                        </div>
+                        <div class="ml-2 text-sm font-semibold text-gray-200">Henry Boyd</div>
+                    </button>
+                    <button class="flex flex-row items-center hover:bg-gray-700 rounded-xl p-2">
+                        <div class="flex items-center justify-center h-8 w-8 bg-gray-500 rounded-full">
+                            M
+                        </div>
+                        <div class="ml-2 text-sm font-semibold text-gray-200">Marta Curtis</div>
+                        <div
+                            class="flex items-center justify-center ml-auto text-xs text-white bg-red-500 h-4 w-4 rounded leading-none">
+                            2
+                        </div>
+                    </button>
+                    <button class="flex flex-row items-center hover:bg-gray-700 rounded-xl p-2">
+                        <div class="flex items-center justify-center h-8 w-8 bg-orange-500 rounded-full">
+                            P
+                        </div>
+                        <div class="ml-2 text-sm font-semibold text-gray-200">Philip Tucker</div>
+                    </button>
+                    <button class="flex flex-row items-center hover:bg-gray-700 rounded-xl p-2">
+                        <div class="flex items-center justify-center h-8 w-8 bg-pink-500 rounded-full">
+                            C
+                        </div>
+                        <div class="ml-2 text-sm font-semibold text-gray-200">Christine Reid</div>
+                    </button>
+                    <button class="flex flex-row items-center hover:bg-gray-700 rounded-xl p-2">
+                        <div class="flex items-center justify-center h-8 w-8 bg-purple-500 rounded-full">
+                            J
+                        </div>
+                        <div class="ml-2 text-sm font-semibold text-gray-200">Jerry Guzman</div>
+                    </button>
+                </div>
+                <div class="flex flex-row items-center justify-between text-xs mt-6 text-gray-400">
+                    <span class="font-bold">Archived</span>
+                    <span class="flex items-center justify-center bg-gray-700 h-4 w-4 rounded-full">7</span>
+                </div>
+                <div class="flex flex-col space-y-1 mt-4 -mx-2">
+                    <button class="flex flex-row items-center hover:bg-gray-700 rounded-xl p-2">
+                        <div class="flex items-center justify-center h-8 w-8 bg-indigo-500 rounded-full">
+                            H
+                        </div>
+                        <div class="ml-2 text-sm font-semibold text-gray-200">Henry Boyd</div>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col flex-auto h-full p-6">
+            <div class="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-900 h-full p-4">
+                <app-message-list  class="max-h-[700px] overflow-auto" ></app-message-list>
+                <app-message-input></app-message-input>
+            </div>
+        </div>
+    </div>
+</div>

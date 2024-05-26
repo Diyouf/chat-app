@@ -1,3 +1,4 @@
+// src/app/interceptors/error.interceptor.ts
 
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpErrorResponse } from '@angular/common/http';
@@ -15,13 +16,32 @@ export class ErrorInterceptor implements HttpInterceptor {
         let errorMsg = '';
         if (error.error instanceof ErrorEvent) {
           // Client-side error
-          errorMsg = `Error: ${error.error.message}`;
+          errorMsg = `Client-side error: ${error.error.message}`;
         } else {
           // Server-side error
-          errorMsg = `Error Code: ${error.status}\nMessage: ${error.message}`;
+          switch (error.status) {
+            case 400:
+              errorMsg = `Bad Request: ${error.message}`;
+              break;
+            case 401:
+              errorMsg = `Unauthorized: ${error.status}`;
+              break;
+            case 403:
+              errorMsg = `Forbidden: ${error.message}`;
+              break;
+            case 404:
+              errorMsg = `Not Found: ${error.message}`;
+              break;
+            case 500:
+              errorMsg = `Internal Server Error: ${error.message}`;
+              break;
+            default:
+              errorMsg = `Unexpected Error: ${error.message}`;
+              break;
+          }
         }
-        this.toastr.error(errorMsg, 'Error');
-        return throwError(errorMsg);
+        this.toastr.error(errorMsg, 'Error', { timeOut: 3000 });
+        return throwError(() => new Error(errorMsg));
       })
     );
   }

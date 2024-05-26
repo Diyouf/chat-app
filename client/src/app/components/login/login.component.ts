@@ -29,9 +29,9 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.mySubscription = this._service.userlogin(this.loginForm.value).subscribe((res) => {
         if (res.success && res.token) {
-          this.toastr.success('User created successfully!', 'Congratulations');
+          this.toastr.success('Logined successfully!', 'Congratulations');
           localStorage.setItem('usertoken', res?.token)
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/chat/app']);
         }else{
           this.toastr.warning(res.message, 'Login failed');
         }

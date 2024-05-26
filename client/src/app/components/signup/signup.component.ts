@@ -44,7 +44,7 @@ export class SignupComponent implements OnInit, OnDestroy {
         if (res.success && res.token) {
           this.toastr.success('User created successfully!', 'Congratulations');
           localStorage.setItem('usertoken', res.token)
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/chat/app']);
         } else {
           this.toastr.warning(res.message, 'Signup Failed');
         }
