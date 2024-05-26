@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development'
 import { Observable } from 'rxjs';
+import { AuthResponse, LoginRequestBody, SignupRequestBody } from 'src/app/models/auth.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,11 +12,11 @@ export class AuthService {
 
   private apiUrl = environment.apiUrl
 
-  userlogin(data:any):Observable<any>{
-      return this.http.post(`${this.apiUrl}/api/auth/login`,data)
+  userlogin(data:LoginRequestBody):Observable<AuthResponse>{
+      return this.http.post<AuthResponse>(`${this.apiUrl}/api/auth/login`,data)
   }
 
-  userSignUp(data:any):Observable<any>{
-    return this.http.post(`${this.apiUrl}/api/auth/signup`,data)
+  userSignUp(data:SignupRequestBody):Observable<AuthResponse>{
+    return this.http.post<AuthResponse>(`${this.apiUrl}/api/auth/signup`,data)
   }
 }

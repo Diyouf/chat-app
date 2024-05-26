@@ -8,12 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatmoduleModule } from './shared/modules/matmodule.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-   
+
   ],
   imports: [
     BrowserModule,
@@ -21,7 +22,14 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatmoduleModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(
+      {
+        timeOut: 3000,
+        positionClass: 'toast-top-right',
+        preventDuplicates: true,
+      }
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent]
