@@ -36,6 +36,8 @@ const login = async (req, res) => {
 const signup = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+
+    // Check if email already exists
     const emailExist = await userModel.findOne({ email });
     if (emailExist) {
       return res
@@ -43,25 +45,28 @@ const signup = async (req, res) => {
         .json({ success: false, message: "Email already exists" });
     }
 
+    // Hash password
     const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new userModel({
-      name,
-      email,
-      password: hashedPassword,
-    });
+
+    // Create new user
+    const newUser = new userModel({ name, email, password: hashedPassword });
     const user = await newUser.save();
+
+    // Generate JWT token
     const token = jwt.sign(
       { id: user._id, role: user.role },
       process.env.JWT_SECRET,
-      {
-        expiresIn: "1h",
-      }
+      { expiresIn: "1h" }
     );
+
     return res
-      .status(200)
-      .json({ status: true, message: "user created successfully", token });
+      .status(202)
+      .json({ status: true, message: "User created successfully", token });
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    return res
+      .status(500)
+      .json({ success: false, message: "Internal server error" });
   }
 };
 

@@ -1,1 +1,7 @@
-<app-userlist [userList]="users" ></app-userlist>
+
+<div class="w-full h-[686px] bg-gray-800 p-8">
+
+    <app-userlist [userList]="users" (chatClicked)="handleChatClick($event)"></app-userlist>
+
+</div>
+

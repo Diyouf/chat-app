@@ -17,6 +17,7 @@ export class AuthService {
   }
 
   userSignUp(data:SignupRequestBody):Observable<AuthResponse>{
+    console.log(data)
     return this.http.post<AuthResponse>(`${this.apiUrl}/api/auth/signup`,data)
   }
 
