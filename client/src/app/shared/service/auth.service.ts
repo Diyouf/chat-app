@@ -20,7 +20,5 @@ export class AuthService {
     return this.http.post<AuthResponse>(`${this.apiUrl}/api/auth/signup`,data)
   }
 
-  testAuth():Observable<AuthResponse>{
-    return this.http.get<AuthResponse>(`${this.apiUrl}/api/auth/protected`)
-  }
+
 }

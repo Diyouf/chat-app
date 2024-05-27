@@ -4,16 +4,20 @@ import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    
+  ],
   imports: [
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    CommonModule
+    CommonModule,
+    MatTableModule
     
   ],
   exports:[
@@ -21,6 +25,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatTableModule
+    
   ]
 })
 export class MatmoduleModule { }

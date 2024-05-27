@@ -9,12 +9,16 @@ import { MatmoduleModule } from './shared/modules/matmodule.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-import { AuthInterceptor } from '../interceptors/auth.interceptor';
-import { ErrorInterceptor } from '../interceptors/error.interceptor';
+import { AuthInterceptor } from './interceptors/auth.interceptor'
+import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { UserlistComponent } from './components/userlist/userlist.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    NavbarComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -5,18 +5,22 @@ import { ChatRoutingModule } from './chat-routing.module';
 import { MessageListComponent } from 'src/app/components/message-list/message-list.component';
 import { ChatComponent } from 'src/app/components/chat/chat.component';
 import { MessageInputComponent } from 'src/app/components/message-input/message-input.component';
+import { MatmoduleModule } from 'src/app/shared/modules/matmodule.module';
+
 
 
 @NgModule({
   declarations: [
     MessageListComponent,
     ChatComponent,
-    MessageInputComponent
+    MessageInputComponent,
+    
 
   ],
   imports: [
     CommonModule,
-    ChatRoutingModule
+    ChatRoutingModule,
+    MatmoduleModule
   ],
   
 })
