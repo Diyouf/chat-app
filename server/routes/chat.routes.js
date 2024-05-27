@@ -1,8 +1,12 @@
 const express = require("express");
 const chatRouter = express.Router();
 const authMiddleware = require("../middlewares/authMiddleware");
-const getConnection = require("../controllers/chatController");
+const {
+  handleConnection,
+  getAllConnections,
+} = require("../controllers/chatController");
 
-chatRouter.post("/checkConnection", authMiddleware, getConnection);
+chatRouter.post("/checkConnection", authMiddleware, handleConnection);
+chatRouter.get("/getAllConnections/:id", authMiddleware, getAllConnections);
 
 module.exports = chatRouter;

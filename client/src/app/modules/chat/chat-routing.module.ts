@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChatComponent } from 'src/app/components/chat/chat.component';
 
 const routes: Routes = [
-  { path: 'app', component: ChatComponent }
+  { path: 'app/:id', component: ChatComponent } // Assuming you want to pass the connection ID as a route parameter
 ];
 
 @NgModule({
