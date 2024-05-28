@@ -1,4 +1,5 @@
 const Connection = require("../models/connection.model");
+const chatModel = require("../models/chat.model");
 const mongoose = require("mongoose");
 
 // Combined route to check for existing connection or create a new one
@@ -47,7 +48,7 @@ const getAllConnections = async (req, res) => {
       return res.status(400).json({ message: "Invalid user ID provided" });
     }
 
-    const objectId = new  mongoose.Types.ObjectId(id);
+    const objectId = new mongoose.Types.ObjectId(id);
 
     const connections = await Connection.find({
       participants: objectId,
@@ -66,4 +67,25 @@ const getAllConnections = async (req, res) => {
   }
 };
 
-module.exports = { handleConnection, getAllConnections };
+const getAllMessages = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: "Invalid user ID provided" });
+    }
+
+    const objectId = new mongoose.Types.ObjectId(id);
+
+    const messages = await chatModel.find({ connection: objectId })
+      .populate('from', 'name') 
+      .populate('to', 'name');  
+
+    return res.status(200).json(messages);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
+module.exports = { handleConnection, getAllConnections, getAllMessages };

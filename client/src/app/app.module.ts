@@ -12,7 +12,11 @@ import { ToastrModule } from 'ngx-toastr';
 import { AuthInterceptor } from './interceptors/auth.interceptor'
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { UserlistComponent } from './components/userlist/userlist.component';
+import { environment } from 'src/environments/environment.development';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+
+const apiUrl = environment.apiUrl
+const config: SocketIoConfig = { url: apiUrl, options: {} };
 
 @NgModule({
   declarations: [
@@ -34,6 +38,7 @@ import { UserlistComponent } from './components/userlist/userlist.component';
         preventDuplicates: true,
       }
     ),
+    SocketIoModule.forRoot(config),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

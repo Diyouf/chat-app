@@ -1,23 +1,41 @@
 const express = require("express");
-const app = express();
+const http = require("http");
+const socketIo = require("socket.io");
 const cors = require("cors");
 require("dotenv").config();
-const port = process.env.PORT || 3000;
 
 const AuthRouter = require("./routes/auth.routes");
-const chatRouter = require("./routes/chat.routes")
-const connectDB = require('./config/db');
+const chatRouter = require("./routes/chat.routes");
 const userRouter = require("./routes/user.routes");
+const connectDB = require('./config/db');
+const { setupSocket } = require("./config/socket");
 
+const app = express();
+const server = http.createServer(app);
+const io = socketIo(server, {
+  cors: {
+    origin: "*", // Allow requests from any origin, you can specify specific origins if needed
+    methods: ["GET", "POST"] // Allow only GET and POST methods
+  }
+});
+
+const port = process.env.PORT || 3000;
+
+// Middleware setup
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 
+// Routes
 app.use("/api/auth", AuthRouter);
 app.use("/api/chat", chatRouter);
 app.use("/api/user", userRouter);
 
-connectDB()
+// Connect to the database
+connectDB();
 
-app.listen(port, () => {
+// Setup Socket.IO
+setupSocket(io);
+
+server.listen(port, () => {
   console.log(`Server listening on ${port}`);
 });

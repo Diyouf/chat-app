@@ -9,14 +9,18 @@
                 </div>
                 <div class="flex flex-col space-y-1 mt-4 -mx-2 h-48 overflow-y-auto">
                     <ng-container *ngFor="let connection of allConnection; trackBy: trackById">
-                        <button class="flex flex-row items-center hover:bg-gray-700 rounded-xl p-2">
+                        <button class="flex flex-row items-center hover:bg-gray-700 rounded-xl p-2"
+                            [ngClass]="{'bg-gray-700': connection._id === selectedConnectionId}"
+                            (click)="selectConnection(connection._id)">
                             <div class="flex items-center justify-center h-8 w-8 bg-indigo-500 rounded-full">
                                 {{ connection.participants[0].name[0].toUpperCase() }}
                             </div>
-                            <div class="ml-2 text-sm font-semibold text-gray-200">{{ connection.participants[0].name }}
+                            <div class="ml-2 text-sm font-semibold text-gray-200">
+                                {{ connection.participants[0].name }}
                             </div>
                         </button>
                     </ng-container>
+
 
                 </div>
 
@@ -36,8 +40,11 @@
         </div>
         <div class="flex flex-col flex-auto h-full p-6">
             <div class="flex flex-col flex-auto flex-shrink-0 rounded-2xl bg-gray-900 h-full p-4">
-                <app-message-list class="max-h-[560px] overflow-auto"></app-message-list>
-                <app-message-input></app-message-input>
+                <div class="h-[560px] overflow-auto">
+                    <app-message-list *ngIf="allChats" [chatData]="allChats"></app-message-list>
+                </div>
+                <app-message-input (messageSent)="sendMessage($event)"></app-message-input>
+
             </div>
         </div>
     </div>

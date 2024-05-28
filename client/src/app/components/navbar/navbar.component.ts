@@ -20,17 +20,17 @@ export class NavbarComponent implements OnInit,  OnDestroy {
   constructor(private _service: UserService) { }
 
   ngOnInit(): void {
-    console.log("working")
     this.userID = this._service.getUserToken();
+    console.log(this.userID)
   
     if (this.userID) {
       // Get user data and subscribe to changes
-      this._service.getUserData(this.userID.id);
+      this.getUserDataAndUpdate();
       this.userSubscription = this._service.getUserDataObserver().subscribe(
         (userData: User | null) => {
           this.userData = userData;
-          this.userInitials = this.getUserInitials(); 
-          this.getRandomColor()
+          this.userInitials = this.getUserInitials();
+          this.getRandomColor();
         }
       );
     } else {
@@ -38,6 +38,11 @@ export class NavbarComponent implements OnInit,  OnDestroy {
       this.userInitials = null;
     }
   }
+  
+  private getUserDataAndUpdate(): void {
+    this._service.getUserData(this.userID!.id);
+  }
+  
 
 
 

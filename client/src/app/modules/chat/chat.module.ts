@@ -6,7 +6,8 @@ import { MessageListComponent } from 'src/app/components/message-list/message-li
 import { ChatComponent } from 'src/app/components/chat/chat.component';
 import { MessageInputComponent } from 'src/app/components/message-input/message-input.component';
 import { MatmoduleModule } from 'src/app/shared/modules/matmodule.module';
-
+import { SocketIoModule } from 'ngx-socket-io';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,14 +15,18 @@ import { MatmoduleModule } from 'src/app/shared/modules/matmodule.module';
     MessageListComponent,
     ChatComponent,
     MessageInputComponent,
-    
+
 
   ],
   imports: [
     CommonModule,
     ChatRoutingModule,
-    MatmoduleModule
+    MatmoduleModule,
+    SocketIoModule,
+    FormsModule
+
   ],
-  
+
+
 })
 export class ChatModule { }

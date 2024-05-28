@@ -34,8 +34,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       const userId = this.userId.id; // Ensure userId is a string
       this._apiService.checkConnection([id, userId]).subscribe((connection: any) => {
         if (connection) {
-          // Connection exists, navigate to chat component with connection details
-          this._router.navigate(['/chat/app', connection._id]); // Assuming the connection object has an _id property
+          console.log(connection)
+          this._apiService.setData({ id: connection._id });
+          this._router.navigate(['/chat/app']); // Assuming the connection object has an _id property
         }
       });
     }
