@@ -5,12 +5,14 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { MatmoduleModule } from 'src/app/shared/modules/matmodule.module';
 import { UserlistComponent } from 'src/app/components/userlist/userlist.component';
+import { CreateGroupComponent } from 'src/app/components/create-group/create-group.component';
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    UserlistComponent   
+    UserlistComponent  ,
+    CreateGroupComponent
     
   ],
   imports: [

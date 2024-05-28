@@ -22,6 +22,7 @@ const config: SocketIoConfig = { url: apiUrl, options: {} };
   declarations: [
     AppComponent,
     NavbarComponent,
+    
 
   ],
   imports: [

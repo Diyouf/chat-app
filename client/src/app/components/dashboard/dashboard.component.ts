@@ -4,6 +4,8 @@ import { Subscription } from 'rxjs';
 import { User } from '../../models/user.model';
 import { UserService } from '../../shared/service/user.service';
 import { ChatService } from '../../shared/service/chat.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateGroupComponent } from '../create-group/create-group.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +21,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
     private _userService: UserService,
     private _apiService: ChatService,
     private _router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private dialog:MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +43,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
         }
       });
     }
+  }
+
+  onClick(){
+    const dialogRef = this.dialog.open(CreateGroupComponent, {
+      width: '500px',
+      data: { name: 'Angular', animal: 'Dog' },
+    });
   }
 
   ngOnDestroy(): void {
