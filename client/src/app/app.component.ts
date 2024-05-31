@@ -1,5 +1,4 @@
-// app.component.ts
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, signal } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -11,6 +10,7 @@ import { filter } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   title = 'Chat app';
   isAuthRoute: boolean = false;
+  darkMode = signal<boolean>(false);
 
   constructor(private router: Router) { }
 
@@ -24,5 +24,13 @@ export class AppComponent implements OnInit {
 
   isAuth(): boolean {
     return this.isAuthRoute;
+  }
+
+  @HostBinding('class.dark') get mode() {
+    return this.darkMode();
+  }
+
+  onDarkModeChange(darkMode: boolean) {
+    this.darkMode.set(darkMode);
   }
 }

@@ -6,6 +6,7 @@ import { DashboardComponent } from 'src/app/components/dashboard/dashboard.compo
 import { MatmoduleModule } from 'src/app/shared/modules/matmodule.module';
 import { UserlistComponent } from 'src/app/components/userlist/userlist.component';
 import { CreateGroupComponent } from 'src/app/components/create-group/create-group.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { CreateGroupComponent } from 'src/app/components/create-group/create-gro
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    MatmoduleModule
+    MatmoduleModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
  
 })

@@ -19,11 +19,11 @@ const setupSocket = (socketIo) => {
           connection: new mongoose.Types.ObjectId(messageData.connectionId),
           to: new mongoose.Types.ObjectId(messageData.to),
           content: messageData.content,
-          from: new mongoose.Types.ObjectId(messageData.from)
+          from: new mongoose.Types.ObjectId(messageData.from),
         });
         await message.save();
         // Emit the saved message to all connected clients
-        io.emit('newMessage', message);
+        io.emit("newMessage", message);
       } catch (error) {
         console.error("Error saving message:", error);
       }

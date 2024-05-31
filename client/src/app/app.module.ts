@@ -14,6 +14,7 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { environment } from 'src/environments/environment.development';
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { DarkLightComponent } from './components/dark-light/dark-light.component';
 
 const apiUrl = environment.apiUrl
 const config: SocketIoConfig = { url: apiUrl, options: {} };
@@ -22,6 +23,7 @@ const config: SocketIoConfig = { url: apiUrl, options: {} };
   declarations: [
     AppComponent,
     NavbarComponent,
+    DarkLightComponent,
     
 
   ],

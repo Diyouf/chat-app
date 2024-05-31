@@ -1,12 +1,10 @@
 <div class="relative z-10 overflow-y-auto bg-gray-700 rounded-md">
     <section class="mat-elevation-z8 h-fit max-h-[57vh] overflow-auto" tabindex="0">
-        <table mat-table [dataSource]="userList" class="rounded-lg table-fixed bg-gray-800 text-white">
-            <!-- Other columns -->
-
-            <!-- Position Column -->
+        <table mat-table [dataSource]="userList" class="rounded-lg table-fixed bg-gray-600 text-white">
+            
             <ng-container matColumnDef="position">
-                <th mat-header-cell *matHeaderCellDef
-                    class="bg-gray-800 px-4 py-3 text-start text-[15px] font-medium border-none">
+                <th *matHeaderCellDef
+                    class="bg-gray-900  text-white px-4 py-3 text-start text-[15px] font-medium border-none ">
                     No
                 </th>
                 <td mat-cell *matCellDef="let element; let i=index" class="px-4 py-3">{{i+1}}</td>
@@ -14,8 +12,8 @@
 
             <!-- Name Column -->
             <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef
-                    class="bg-gray-800 px-4 py-3 text-start text-[15px] font-medium border-none">
+                <th *matHeaderCellDef
+                    class="bg-gray-900 text-white px-4 py-3 text-start text-[15px] font-medium border-none">
                     Name
                 </th>
                 <td mat-cell *matCellDef="let element" class="px-4 py-3">{{element.name}}</td>
@@ -23,8 +21,8 @@
 
             <!-- Email Column -->
             <ng-container matColumnDef="email">
-                <th mat-header-cell *matHeaderCellDef
-                    class="bg-gray-800 px-4 py-3 text-start text-[15px] font-medium border-none">
+                <th *matHeaderCellDef
+                    class="bg-gray-900 text-white px-4 py-3 text-start text-[15px] font-medium border-none">
                     Email
                 </th>
                 <td mat-cell *matCellDef="let element" class="px-4 py-3">{{element.email}}</td>
@@ -32,8 +30,8 @@
 
             <!-- Joined Date Column -->
             <ng-container matColumnDef="joinedDate">
-                <th mat-header-cell *matHeaderCellDef
-                    class="bg-gray-800 px-4 py-3 text-start text-[15px] font-medium border-none">
+                <th *matHeaderCellDef
+                    class="bg-gray-900 px-4 text-white py-3 text-start text-[15px] font-medium border-none">
                     Joined Date
                 </th>
                 <td mat-cell *matCellDef="let element" class="px-4 py-3">{{element.joinedDate | date}}</td>
@@ -41,8 +39,8 @@
 
             <!-- Action Column -->
             <ng-container matColumnDef="action">
-                <th mat-header-cell *matHeaderCellDef
-                    class="bg-gray-800 px-4 py-3 text-start text-[15px] font-medium border-none">
+                <th *matHeaderCellDef
+                    class="bg-gray-900  text-white px-4 py-3 text-start text-[15px] font-medium border-none">
                     Action
                 </th>
                 <td mat-cell *matCellDef="let element" class="px-4 py-3">
@@ -53,7 +51,7 @@
             </ng-container>
 
             <!-- Header and Row Definitions -->
-            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-header-row  *matHeaderRowDef="displayedColumns; sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </section>

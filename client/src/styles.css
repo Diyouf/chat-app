@@ -4,11 +4,7 @@
 
 
 .mat-mdc-row {
-    background-color: #111827 !important;
+    background-color: #1d232f !important;
     color: white !important;
 }
 
-.mat-table .mat-header-cell {
-    color: rgba(243, 102, 33, 1) !important;
-    background-color: #FCF3EC !important;
-}
