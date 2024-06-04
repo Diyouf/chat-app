@@ -1,59 +1,64 @@
-<section class="bg-gray-800">
+<section class="bg-slate-50 dark:bg-gray-800">
     <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div class="w-full rounded-lg md:mt-0 sm:max-w-md xl:p-0 border border-spacing-1 bg-gray-800">
-            <div class="p-6 space-y-4 md:space-y-3 sm:p-8">
-                <h1 class="text-xl font-bold leading-tight tracking-tight text-white md:text-2xl bg-gray-800">
-                    Sign up to your account
-                </h1>
-                <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="space-y-4 ">
-                    <div>
-                        <label class="text-white">Name</label>
-                        <input formControlName="name" required
-                            class="border rounded-md border-spacing-1 px-4 text-white w-full h-12 bg-gray-800">
-                        <div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched"
-                            class="text-red-500 text-sm mt-1">Name is required</div>
-                    </div>
-                    <div>
-                        <label class="text-white">Email</label>
-                        <input formControlName="email" required
-                            class="border rounded-md border-spacing-1 px-4 text-white w-full h-12 bg-gray-800">
-                        <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched"
-                            class="text-red-500 text-sm mt-1">Email is required</div>
-                        <div *ngIf="signupForm.get('email')?.hasError('email')" class="text-red-500 text-sm mt-1">Please
-                            enter a valid email address</div>
-                    </div>
-                    <div class="mt-6">
-                        <label class="text-white">Password</label>
-                        <input type="password" formControlName="password" required
-                            class="border rounded-md border-spacing-1 px-4 text-white w-full h-12 bg-gray-800">
-                        <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
-                            class="text-red-500 text-sm mt-1">Password is required</div>
-                        <div *ngIf="signupForm.get('password')?.hasError('pattern')" class="text-red-500 text-sm mt-1">
-                            Please choose a stronger password. Try a mix of letters, numbers and symbols</div>
-                    </div>
-                    <div class="mt-6">
-                        <label class="text-white">Confirm Password</label>
-                        <input type="password" formControlName="confirmpassword" required
-                            class="border rounded-md border-spacing-1 px-4 text-white w-full h-12 bg-gray-800">
-                        <div *ngIf="signupForm.get('confirmpassword')?.invalid && signupForm.get('confirmpassword')?.touched"
-                            class="text-red-500 text-sm mt-1">Confirm Password is required</div>
-                        <div *ngIf="signupForm.get('confirmpassword')?.hasError('pattern')"
-                            class="text-red-500 text-sm mt-1">Please choose a stronger Confirm password. Try a mix of
-                            letters, numbers and symbols</div>
-                        <div *ngIf="confirmPassNotMatch" class="text-red-500 text-sm mt-1">Confirm password not match
-                        </div>
-                    </div>
-                    <div class="pt-6">
-                        <button class="w-full px-4 py-3 text-white bg-violet-500   hover:bg-violet-400 rounded-md "
-                            type="submit">sign up</button>
-                    </div>
-                </form>
-                <p class="text-sm font-light text-gray-50 text-center">
-                    Already have account <a [routerLink]="['/auth/login']"
-                        class="font-medium text-violet-500  hover:underline dark:text-primary-500">Login
-                    </a>
-                </p>
+      <div class="w-full rounded-lg md:mt-0 sm:max-w-md xl p-0 bg-slate-100 dark:bg-gray-900">
+        <div class="p-6 space-y-4 md:space-y-3 sm:p-8">
+          <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 dark:text-white md:text-2xl bg-slate-100 dark:bg-gray-900">
+            Sign up to your account
+          </h1>
+          <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="space-y-4">
+            <div>
+              <label class="text-gray-900 dark:text-white">Name</label>
+              <input formControlName="name" required
+                     class="rounded-md px-4 text-gray-900 dark:text-white w-full h-12 bg-slate-50 dark:bg-gray-800">
+              <div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched"
+                   class="text-red-500 text-sm mt-1">Name is required
+              </div>
             </div>
+            <div>
+              <label class="text-gray-900 dark:text-white">Email</label>
+              <input formControlName="email" required
+                     class="rounded-md px-4 text-gray-900 dark:text-white w-full h-12 bg-slate-50 dark:bg-gray-800">
+              <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched"
+                   class="text-red-500 text-sm mt-1">Email is required
+              </div>
+              <div *ngIf="signupForm.get('email')?.hasError('email')"
+                   class="text-red-500 text-sm mt-1">Please enter a valid email address
+              </div>
+            </div>
+            <div class="mt-6">
+              <label class="text-gray-900 dark:text-white">Password</label>
+              <input type="password" formControlName="password" required
+                     class="rounded-md px-4 text-gray-900 dark:text-white w-full h-12 bg-slate-50 dark:bg-gray-800">
+              <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
+                   class="text-red-500 text-sm mt-1">Password is required
+              </div>
+              <div *ngIf="signupForm.get('password')?.hasError('pattern')"
+                   class="text-red-500 text-sm mt-1">Please choose a stronger password. Try a mix of letters, numbers and symbols
+              </div>
+            </div>
+            <div class="mt-6">
+              <label class="text-gray-900 dark:text-white">Confirm Password</label>
+              <input type="password" formControlName="confirmpassword" required
+                     class="rounded-md px-4 text-gray-900 dark:text-white w-full h-12 bg-slate-50 dark:bg-gray-800">
+              <div *ngIf="signupForm.get('confirmpassword')?.invalid && signupForm.get('confirmpassword')?.touched"
+                   class="text-red-500 text-sm mt-1">Confirm Password is required
+              </div>
+              <div *ngIf="signupForm.get('confirmpassword')?.hasError('pattern')"
+                   class="text-red-500 text-sm mt-1">Please choose a stronger Confirm password. Try a mix of letters, numbers and symbols
+              </div>
+              <div *ngIf="confirmPassNotMatch" class="text-red-500 text-sm mt-1">Confirm password not match
+              </div>
+            </div>
+            <div class="pt-6">
+              <button class="w-full px-4 py-3 text-white bg-violet-500 hover:bg-violet-400 rounded-md" type="submit">Sign up</button>
+            </div>
+          </form>
+          <p class="text-sm font-light text-gray-900 dark:text-white text-center">
+            Already have an account? <a [routerLink]="['/auth/login']"
+                                        class="font-medium text-violet-500 hover:underline dark:text-primary-500">Login</a>
+          </p>
         </div>
+      </div>
     </div>
-</section>
+  </section>
+  

@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit, signal } from '@angular/core';
+import { Component, effect, HostBinding, OnInit, signal } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
@@ -10,9 +10,13 @@ import { filter } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   title = 'Chat app';
   isAuthRoute: boolean = false;
-  darkMode = signal<boolean>(false);
+  darkMode = signal<boolean>(JSON.parse(localStorage.getItem('darkMode') || 'false') as boolean);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    effect(() => {
+      localStorage.setItem('darkMode', JSON.stringify(this.darkMode()))
+    });
+  }
 
   ngOnInit() {
     this.router.events.pipe(
