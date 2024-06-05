@@ -1,64 +1,30 @@
-<div class="relative z-10 overflow-y-auto bg-gray-700 rounded-md">
-    <section class="mat-elevation-z8 h-fit max-h-[57vh] overflow-auto" tabindex="0">
-        <table mat-table [dataSource]="userList" class="rounded-lg table-fixed bg-gray-600 text-white">
-            
-            <ng-container matColumnDef="position">
-                <th *matHeaderCellDef
-                    class="bg-gray-900  text-white px-4 py-3 text-start text-[15px] font-medium border-none ">
-                    No
-                </th>
-                <td mat-cell *matCellDef="let element; let i=index" class="px-4 py-3">{{i+1}}</td>
-            </ng-container>
-
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-                <th *matHeaderCellDef
-                    class="bg-gray-900 text-white px-4 py-3 text-start text-[15px] font-medium border-none">
-                    Name
-                </th>
-                <td mat-cell *matCellDef="let element" class="px-4 py-3">{{element.name}}</td>
-            </ng-container>
-
-            <!-- Email Column -->
-            <ng-container matColumnDef="email">
-                <th *matHeaderCellDef
-                    class="bg-gray-900 text-white px-4 py-3 text-start text-[15px] font-medium border-none">
-                    Email
-                </th>
-                <td mat-cell *matCellDef="let element" class="px-4 py-3">{{element.email}}</td>
-            </ng-container>
-
-            <!-- Joined Date Column -->
-            <ng-container matColumnDef="joinedDate">
-                <th *matHeaderCellDef
-                    class="bg-gray-900 px-4 text-white py-3 text-start text-[15px] font-medium border-none">
-                    Joined Date
-                </th>
-                <td mat-cell *matCellDef="let element" class="px-4 py-3">{{element.joinedDate | date}}</td>
-            </ng-container>
-
-            <!-- Action Column -->
-            <ng-container matColumnDef="action">
-                <th *matHeaderCellDef
-                    class="bg-gray-900  text-white px-4 py-3 text-start text-[15px] font-medium border-none">
-                    Action
-                </th>
-                <td mat-cell *matCellDef="let element" class="px-4 py-3">
-                    <button mat-icon-button (click)="openChat(element._id)" aria-label="Chat">
-                        <mat-icon>chat</mat-icon>
+<div class=" rounded-md pl-7 py-4">
+    <div class="grid grid-cols-2 gap-4">
+        <div *ngFor="let item of userList">
+            <div (click)="openChat(item._id)"
+                class="flex flex-col items-center bg-slate-100 rounded-lg  md:flex-row md:max-w-2xl hover:bg-slate-200 dark:bg-gray-900 dark:hover:bg-gray-700 w-full">
+                <div class="h-12 font-bold w-12 mx-4 rounded-full bg-violet-600 px-4 py-3 text-center text-white">
+                    {{item.name[0].toUpperCase()}}
+                </div>
+                <div class="flex flex-col w-full justify-between p-4 leading-normal">
+                    <h5 class="mb-1 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ item.name }}
+                    </h5>
+                    <p class="mb-3 text-sm font-normal text-gray-800 dark:text-gray-400">{{ item.email }}</p>
+                </div>
+                <div class="flex justify-center items-center p-4 md:p-7 text-violet-600">
+                    <button class="w-12 h-12 pb-1 border-2 border-current rounded-full flex items-center justify-center"
+                        aria-label="Chat">
+                        <mat-icon class="text-2xl">chat</mat-icon>
                     </button>
-                </td>
-            </ng-container>
+                </div>
+            </div>
 
-            <!-- Header and Row Definitions -->
-            <tr mat-header-row  *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-        </table>
-    </section>
+        </div>
+    </div>
 
     <div class="w-full flex justify-center items-center" *ngIf="userList.length === 0">
-        <div class="p-3">
-            <img src="assets/images/empty.png" alt="">
+        <div class="p-3 text-center">
+            <img src="assets/images/empty.png" alt="" class="mx-auto">
             <p class="m-2 text-center text-gray-500">No Data</p>
         </div>
     </div>

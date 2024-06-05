@@ -9,7 +9,6 @@ import { User } from 'src/app/models/user.model';
 })
 
 export class UserlistComponent  {
-  displayedColumns: string[] = ['position', 'name', 'email', 'joinedDate','action'];
   @Input() userList: User[] = [];
   @Output() chatClicked: EventEmitter<string> = new EventEmitter<string>();
 
