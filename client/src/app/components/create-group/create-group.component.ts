@@ -17,7 +17,7 @@ export class CreateGroupComponent implements OnInit, OnDestroy {
 
   constructor(private userService: UserService, private fb: FormBuilder, public dialogRef: MatDialogRef<CreateGroupComponent>) {
     this.groupForm = this.fb.group({
-      groupName: ['', Validators.required], // Add required validator
+      groupName: ['', Validators.required],
       selectedUsers: [[]]
     });
   }
@@ -43,14 +43,12 @@ export class CreateGroupComponent implements OnInit, OnDestroy {
     } else {
       updatedSelectedUsers.push(userId);
     }
-
     selectedUsers.setValue(updatedSelectedUsers);
   }
 
   onSubmit(): void {
     if (this.groupForm.invalid) {
-      // Handle form validation errors
-      return;
+      
     }
     this.dialogRef.close()
     this.groupForm.reset();
